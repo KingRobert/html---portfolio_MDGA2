@@ -87,17 +87,41 @@ a{
 }
 
 .home-info h2 span{
-
+    position: relative;
     display: inline-block;
+    color: transparent;
     -webkit-text-stroke: .7px  rgb(15, 201, 15);
     animation: display-text 16s linear infinite;
     animation-delay: calc(-4s * var(--i));
 }
 
 @keyframes display-text{
-    25%
-    100%{
+    25%,
+    100% {
         display:none;
+    }
+}
+
+
+.home-info h2 span::before {
+    content: attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: 2px solid rgb(15, 201, 15);
+    color: rgb(15, 201, 15);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+
+@keyframes fill-text{
+    10%,
+    100%{
+        width: 0;
+    }
+    70%,
+    90%{
+        width: 100%;
     }
 }
 
@@ -179,6 +203,6 @@ a{
     object-fit: cover;
     justify-content: space-around;
 }
-.goodies{
+/*.goodies{
     
-}
+}*/
